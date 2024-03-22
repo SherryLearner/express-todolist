@@ -1,0 +1,16 @@
+
+# Ignore node modules
+/node_modules
+
+# Ignore built files
+/public/js/bundle.js
+/public/css/style.css
+
+# Ignore log files
+/logs
+
+# Ignore editor files
+.vscode/
+
+# Ignore environment variables
+.env

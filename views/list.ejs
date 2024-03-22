@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1 id="Date"><%= date %></h1>
+
+    <ul id="tasks">
+        <% tasks.forEach(task => { %>
+            <li><%= task %></li>
+        <% }) %>
+    </ul>
+
+    <form action="/" method="POST">
+        <input type="text" name="task">
+        <input type="submit" value="Add Task">
+    </form>
+    
+</body>
+</html>
