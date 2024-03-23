@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <style>
-        .delete {
-            cursor: pointer;
-            color: red;
-            font-weight: bold;
-            font-size: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1 id="Date"><%= date %></h1>
-
-    <ul id="tasks">
+    <div id="heading" class="box">
+        <h1 id="Date"><%= date %></h1>
+    </div>
+    
+    <div id="tasks" class="box">
         <% tasks.forEach(task => { %>
-            <li class="task" data-id="<%= tasks.indexOf(task) %>"><%= task %> <span class="delete">X</span></li>
+            <div class="item">
+                <input type="checkbox">
+                <p class="task" data-id="<%= tasks.indexOf(task) %>"><%= task %>
+                <span class="delete">X</span>
+                </p>
+            </div>
         <% }) %>
-    </ul>
 
-    <form action="/" method="POST">
-        <input type="text" name="task">
-        <input type="submit" value="Add Task">
-    </form>
+        <form class="item" action="/" method="POST">
+            <input type="text" name="task" placeholder="Add new task..." required autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+
+    </div>
 
     <script>
         const deleteButtons = document.querySelectorAll('.delete');
@@ -39,7 +40,7 @@
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onload = () => {
                     if (xhr.status === 200) {
-                        btn.parentElement.remove();
+                        btn.parentElement.parentElement.remove();
                     }
                 };
                 xhr.send(JSON.stringify({ index: id }));
